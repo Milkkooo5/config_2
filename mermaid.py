@@ -48,3 +48,49 @@ def generate_mermaid_code(dependencies):
         dep_id = dep['dependency_id']
         mermaid_code += f"  {target_framework} -->|{dep_id} v{dep['version']}| {dep_id}\n"
     return mermaid_code
+def main():
+    # Настроим парсер командной строки
+    parser = argparse.ArgumentParser(
+        description="Инструмент для визуализации графа зависимостей пакета .nupkg в формате Mermaid")
+
+    # Добавляем необходимые аргументы
+    parser.add_argument('graph_tool_path', help="Путь к программе для визуализации графов.")
+    parser.add_argument('package_name', help="Имя анализируемого пакета (путь к .nupkg файлу).")
+    parser.add_argument('repo_url', help="URL-адрес репозитория для получения зависимостей.")
+
+    # Парсим аргументы командной строки
+    args = parser.parse_args()
+
+    nupkg_path = args.package_name
+    repo_url = args.repo_url
+
+    # Выводим введенные параметры
+    print(f"Путь к инструменту визуализации: {args.graph_tool_path}")
+    print(f"Имя пакета: {nupkg_path}")
+    print(f"URL-адрес репозитория: {repo_url}")
+
+    # Извлекаем и парсим .nuspec
+    try:
+        nuspec_content = extract_nuspec_from_nupkg(nupkg_path)
+        dependencies = parse_nuspec_for_dependencies(nuspec_content)
+
+        if dependencies:
+            print("\nЗависимости пакета:")
+            for dep in dependencies:
+                print(
+                    f"Целевая платформа: {dep['target_framework']}, "
+                    f"Зависимость: {dep['dependency_id']}, Версия: {dep['version']}")
+
+            # Генерируем Mermaid код
+            mermaid_code = generate_mermaid_code(dependencies)
+            print("\nMermaid код для визуализации зависимостей:")
+            print(mermaid_code)
+        else:
+            print("Зависимости не найдены.")
+
+    except Exception as e:
+        print(f"Ошибка при извлечении зависимостей: {e}")
+
+
+if __name__ == '__main__':
+    main()
