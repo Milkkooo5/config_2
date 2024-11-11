@@ -21,3 +21,23 @@ def extract_nuspec_from_nupkg(nupkg_path):
         with zip_ref.open(nuspec_file) as file:
             return file.read()
 
+def parse_nuspec_for_dependencies(nuspec_content):
+    # Загружаем XML с учетом пространства имен
+    namespaces = {'ns': 'http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd'}
+    root = ET.fromstring(nuspec_content)
+
+    dependencies = []
+
+    # Ищем все группы зависимостей в <ns0:dependencies>
+    for group in root.findall('.//ns:dependencies/ns:group', namespaces):
+        target_framework = group.get('targetFramework')
+        for dep in group.findall('ns:dependency', namespaces):
+            dep_id = dep.get('id')
+            dep_version = dep.get('version')
+            dependencies.append({
+                'target_framework': target_framework,
+                'dependency_id': dep_id,
+                'version': dep_version
+            })
+
+    return dependencies
