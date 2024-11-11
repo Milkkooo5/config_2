@@ -41,3 +41,10 @@ def parse_nuspec_for_dependencies(nuspec_content):
             })
 
     return dependencies
+def generate_mermaid_code(dependencies):
+    mermaid_code = "graph TD\n"
+    for dep in dependencies:
+        target_framework = dep['target_framework']
+        dep_id = dep['dependency_id']
+        mermaid_code += f"  {target_framework} -->|{dep_id} v{dep['version']}| {dep_id}\n"
+    return mermaid_code
