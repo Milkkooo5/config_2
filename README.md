@@ -87,4 +87,23 @@ python script_name.py <graph_tool_path> <package_name> <repo_url>
 
 # Пример использования
 
+![image](https://github.com/user-attachments/assets/c26d2599-89cb-49af-ab42-8ffa7a90229a)
+
+
+
+![image](https://github.com/user-attachments/assets/1102afd4-6d65-41be-aa1d-db075a66bbfd)
+
+
+
+![image](https://github.com/user-attachments/assets/14cad428-78ca-47b5-a1b4-c235910616be)
+
+
+
+![image](https://github.com/user-attachments/assets/c3be3de9-0b2a-4e85-8de5-17021c4ea53e)
+
+
+
+![image](https://github.com/user-attachments/assets/d93808cc-5241-4ffe-a863-4d391522d35a)
+
+
 
