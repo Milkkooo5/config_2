@@ -107,3 +107,9 @@ python script_name.py <graph_tool_path> <package_name> <repo_url>
 
 
 
+# Тестирование 
+
+Выполним тестирование, используя unittest 
+
+
+
