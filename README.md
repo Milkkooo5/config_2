@@ -112,4 +112,17 @@ python script_name.py <graph_tool_path> <package_name> <repo_url>
 Выполним тестирование, используя unittest 
 
 
+![image](https://github.com/user-attachments/assets/5fceb0f9-9f67-4da9-a319-db9b2501843b)
+
+
+![image](https://github.com/user-attachments/assets/ccc9210b-b61c-4b4a-a26a-bcd6c146e227)
+
+
+# Результаты тестирования 
+
+![image](https://github.com/user-attachments/assets/d5a2600c-e1a5-4378-88c4-89a12a694dd1)
+
+
+
+
 
