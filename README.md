@@ -29,7 +29,7 @@
 
 Программа запускается из командной строки с использованием Python. Команда для запуска выглядит следующим образом:
 
-python script_name.py <graph_tool_path> <package_name> <repo_url>
+python config2.py <graph_tool_path> <package_name> <repo_url>
 
 ##### Аргументы командной строки:
 
